@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix src/*.js",
     "serve": "parcel src/homework.html",
-    "build": "parcel build src/index.html --out-dir docs --public-url /storytelling-first-homework"
+    "build": "parcel build src/homework.html --out-dir docs --public-url /storytelling-first-homework"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +20,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    
+    "prettier": "^1.14.2"
   },
   "dependencies": {
     "d3": "^5.7.0",
