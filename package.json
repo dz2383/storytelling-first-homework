@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix src/*.js",
-    "serve": "parcel src/homework.html",
-    "build": "parcel build src/homework.html --out-dir docs --public-url /storytelling-first-homework"
+    "serve": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir docs --public-url /storytelling-first-homework"
   },
   "author": "",
   "license": "ISC",
