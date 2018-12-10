@@ -1,54 +1,25 @@
 import * as d3 from 'd3'
-;(function() {
-  var height = 400
-  var width = 400
 
-  // This is weird compared to what we did
-  // in class, but just know that 'svg'
-  // is the svg element and you can
-  // do all the normal stuff with it
-  var svg = d3
-    .select('#chart4')
-    .select('svg')
-    .attr('height', height + 50)
-    .attr('width', width + 50)
-    .append('g')
-    .attr('transform', 'translate(25, 25)')
+let margin = { top: 20, left: 25, right: 0, bottom: 70 }
 
-  var datapoints = [
-    { hotdogs: 10, hamburgers: 10, animal: 'dog', name: 'Stevie' },
-    { hotdogs: 3, hamburgers: 3, animal: 'cat', name: 'Nicholas' },
-    { hotdogs: 2, hamburgers: 2, animal: 'cat', name: 'Bubbletree' },
-    { hotdogs: 10, hamburgers: 3, animal: 'cow', name: 'Particle' },
-    { hotdogs: 7, hamburgers: 5, animal: 'dog', name: 'Jumpup' },
-    { hotdogs: 4, hamburgers: 9, animal: 'dog', name: 'Parlay' },
-    { hotdogs: 3, hamburgers: 1, animal: 'cat', name: 'Hio' }
-  ]
+let height = 600 - margin.top - margin.bottom
+let width = 800 - margin.left - margin.right
 
-  // Build your scales here
+let svg = d3
+  .select('#chart-4')
+  .append('svg')
+  .attr('height', height + margin.top + margin.bottom)
+  .attr('width', width + margin.left + margin.right)
+  .append('g')
+  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-  var xPositionScale = d3
-    .scaleLinear()
-    .domain([0, 10])
-    .range([0, width])
+Promise.all([
+  d3.csv(require('./data/ces.csv')),
+  d3.csv(require('./data/wages.csv'))
+])
+  .then(ready)
+  .catch(err => console.log('Failed on', err))
 
-  var yPositionScale = d3
-    .scaleLinear()
-    .domain([0, 10])
-    .range([height, 0])
-  // Add your circles and style them here
+function ready([ces, wages]) {
 
-  svg
-    .selectAll('circle')
-    .data(datapoints)
-    .enter()
-    .append('circle')
-    .attr('r', 10)
-    .attr('fill', '#F5B7B1')
-    .attr('cx', function(d) {
-      return xPositionScale(d.hamburgers)
-    })
-    .attr('cy', function(d) {
-      return yPositionScale(d.hotdogs)
-    })
-})()
+}
