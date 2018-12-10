@@ -1,20 +1,15 @@
 {
-  "name": "classwork",
+  "name": "01-homework",
   "version": "1.0.0",
   "description": "",
-  "main": "graph.js",
+  "main": "01-chart.js",
   "scripts": {
-    "test": "jest",
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --out-dir docs --public-url /change-me-to-match-your-repo"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix src/*.js",
+    "serve": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir docs --public-url /storytelling-first-homework"
   },
-  "jest": {
-    "setupFiles": [
-      "<rootDir>/tests/setupTests.js"
-    ]
-  },
-  "keywords": [],
-  "author": "Jonathan Soma <jonathan.soma@gmail.com> (http://jonathansoma.com)",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.5.0",
@@ -25,17 +20,10 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "fetch-mock": "^7.0.0-alpha.6",
-    "glob": "^7.1.3",
     "prettier": "^1.14.2"
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0",
     "d3": "^5.7.0",
-    "debounce": "^1.2.0",
-    "enter-view": "^1.0.0",
-    "jest": "^23.6.0",
-    "node-fetch": "^2.2.0",
-    "topojson": "^3.0.2"
+    "parcel": "^1.9.7"
   }
 }

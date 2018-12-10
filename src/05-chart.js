@@ -1,19 +1,13 @@
 import * as d3 from 'd3'
 ;(function() {
-  var height = 400
+  var height = 200
   var width = 400
 
-  // This is weird compared to what we did
-  // in class, but just know that 'svg'
-  // is the svg element and you can
-  // do all the normal stuff with it
   var svg = d3
-    .select('#chart4')
+    .select('#chart5')
     .select('svg')
-    .attr('height', height + 50)
-    .attr('width', width + 50)
-    .append('g')
-    .attr('transform', 'translate(25, 25)')
+    .attr('height', height)
+    .attr('width', width)
 
   var datapoints = [
     { hotdogs: 10, hamburgers: 10, animal: 'dog', name: 'Stevie' },
@@ -32,23 +26,30 @@ import * as d3 from 'd3'
     .domain([0, 10])
     .range([0, width])
 
-  var yPositionScale = d3
-    .scaleLinear()
+  var radiusScale = d3
+    .scaleSqrt()
     .domain([0, 10])
-    .range([height, 0])
-  // Add your circles and style them here
+    .range([0, 30])
 
+  var colorScale = d3
+    .scaleOrdinal()
+    .domain(['dog', 'cat', 'cow'])
+    .range(['#fc8d59', '#2ca25f', '#91bfdb'])
+  // Add your circles and style them here
   svg
     .selectAll('circle')
     .data(datapoints)
     .enter()
     .append('circle')
-    .attr('r', 10)
-    .attr('fill', '#F5B7B1')
+    .attr('r', function(d) {
+      return radiusScale(d.hotdogs)
+    })
+    .attr('fill', function(d) {
+      return colorScale(d.animal)
+    })
     .attr('cx', function(d) {
       return xPositionScale(d.hamburgers)
     })
-    .attr('cy', function(d) {
-      return yPositionScale(d.hotdogs)
-    })
+    .attr('cy', height / 2)
+    .attr('opacity', 0.5)
 })()
